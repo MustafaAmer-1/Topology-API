@@ -1,9 +1,11 @@
 #ifndef TOPOLOGY_API_DEVICE_H
 #define TOPOLOGY_API_DEVICE_H
 
+#include "ElectronicObject.h"
+
 struct Value;
 
-class Device {
+class Device : public ElectronicObject{
 private:
     Value* value;
 
