@@ -7,6 +7,8 @@
 struct Value;
 struct NetList;
 
+class JsonExportVisitor;
+
 class Device : public ElectronicObject{
 private:
     Value* value;
@@ -20,6 +22,7 @@ public:
     double getMax();
     double getDefault();
     virtual bool isAttached(Node* ) = 0;
+    virtual std::string accept(JsonExportVisitor* visitor) = 0;
 };
 
 #endif //TOPOLOGY_API_DEVICE_H
