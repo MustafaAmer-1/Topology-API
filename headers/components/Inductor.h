@@ -15,6 +15,8 @@ public:
     void attachT1(Node* );
     void attachT2(Node* );
     bool isAttached(Node *node) override;
+    Node* getT1();
+    Node* getT2();
 };
 
 

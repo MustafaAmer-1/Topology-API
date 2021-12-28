@@ -17,3 +17,11 @@ void Resistor::attachT2(Node *t2) {
 bool Resistor::isAttached(Node *node) {
     return (*node == *netlist->t1 || *node == *netlist->t2);
 }
+
+Node *Resistor::getT1() {
+    return netlist->t1;
+}
+
+Node *Resistor::getT2() {
+    return netlist->t2;
+}

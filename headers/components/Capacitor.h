@@ -15,6 +15,8 @@ public:
     void attachPos_t(Node* );
     void attachNeg_t(Node* );
     bool isAttached(Node *node) override;
+    Node* getPos_t();
+    Node* getNeg_t();
 };
 
 

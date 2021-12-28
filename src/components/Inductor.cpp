@@ -17,3 +17,11 @@ void Inductor::attachT2(Node *t2) {
 bool Inductor::isAttached(Node *node) {
     return (*node == *netlist->t1 || *node == *netlist->t2);
 }
+
+Node *Inductor::getT1() {
+    return netlist->t1;
+}
+
+Node *Inductor::getT2() {
+    return netlist->t2;
+}

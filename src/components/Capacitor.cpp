@@ -17,3 +17,11 @@ void Capacitor::attachNeg_t(Node *neg_t) {
 bool Capacitor::isAttached(Node *node) {
     return (*node == *netlist->neg_t || *node == *netlist->pos_t);
 }
+
+Node* Capacitor::getPos_t() {
+    return netlist->pos_t;
+}
+
+Node* Capacitor::getNeg_t() {
+    return netlist->neg_t;
+}

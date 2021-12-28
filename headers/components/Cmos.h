@@ -16,6 +16,9 @@ public:
     void attachGate(Node* );
     void attachSource(Node* );
     bool isAttached(Node *node) override;
+    Node* getSource();
+    Node* getDrain();
+    Node* getGate();
 };
 
 

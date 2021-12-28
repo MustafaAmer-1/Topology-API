@@ -21,3 +21,15 @@ void Cmos::attachSource(Node * source) {
 bool Cmos::isAttached(Node *node) {
     return (*node == *netlist->drain || *node == *netlist->source || *node == *netlist->gate);
 }
+
+Node *Cmos::getSource() {
+    return netlist->source;
+}
+
+Node *Cmos::getDrain() {
+    return netlist->drain;
+}
+
+Node *Cmos::getGate() {
+    return netlist->gate;
+}
