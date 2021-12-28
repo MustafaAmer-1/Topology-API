@@ -11,6 +11,10 @@ class Resistor : public Device{
 public:
     explicit Resistor(double defaultValue=DEFAULT_RES_VALUE,
                       double min=DEFAULT_MIN_RES_VALUE, double max=DEFAULT_MAX_RES_VALUE);
+
+    void attachT1(Node* t1);
+    void attachT2(Node* t2);
+    bool isAttached(Node *node) override;
 };
 
 

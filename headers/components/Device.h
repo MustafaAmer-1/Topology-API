@@ -19,6 +19,7 @@ public:
     double getMin();
     double getMax();
     double getDefault();
+    virtual bool isAttached(Node* ) = 0;
 };
 
 #endif //TOPOLOGY_API_DEVICE_H

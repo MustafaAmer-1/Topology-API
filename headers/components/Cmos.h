@@ -11,6 +11,11 @@ class Cmos : public Device{
 public:
     explicit Cmos(double defaultValue=DEFAULT_CMOS_VALUE,
                   double min=DEFAULT_MIN_CMOS_VALUE, double max=DEFAULT_MAX_CMOS_VALUE);
+
+    void attachDrain(Node* );
+    void attachGate(Node* );
+    void attachSource(Node* );
+    bool isAttached(Node *node) override;
 };
 
 

@@ -11,6 +11,10 @@ class Capacitor : public Device{
 public:
     explicit Capacitor(double defaultValue=DEFAULT_CAP_VALUE,
                        double min=DEFAULT_MIN_CAP_VALUE, double max=DEFAULT_MAX_CAP_VALUE);
+
+    void attachPos_t(Node* );
+    void attachNeg_t(Node* );
+    bool isAttached(Node *node) override;
 };
 
 
