@@ -1,4 +1,5 @@
 #include "Capacitor.h"
+#include "JsonExportVisitor.h"
 
 struct NetList{
     Node *pos_t, *neg_t;
@@ -24,4 +25,8 @@ Node* Capacitor::getPos_t() {
 
 Node* Capacitor::getNeg_t() {
     return netlist->neg_t;
+}
+
+std::string Capacitor::accept(JsonExportVisitor *visitor) {
+    return visitor->exportCapacitor(this);
 }

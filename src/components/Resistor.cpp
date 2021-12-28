@@ -1,4 +1,5 @@
 #include "Resistor.h"
+#include "JsonExportVisitor.h"
 
 struct NetList{
     Node *t1, *t2;
@@ -24,4 +25,8 @@ Node *Resistor::getT1() {
 
 Node *Resistor::getT2() {
     return netlist->t2;
+}
+
+std::string Resistor::accept(JsonExportVisitor *visitor) {
+    return visitor->exportResistor(this);
 }

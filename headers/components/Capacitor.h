@@ -17,6 +17,8 @@ public:
     bool isAttached(Node *node) override;
     Node* getPos_t();
     Node* getNeg_t();
+
+    std::string accept(JsonExportVisitor *visitor) override;
 };
 
 

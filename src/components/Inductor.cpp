@@ -1,4 +1,5 @@
 #include "Inductor.h"
+#include "JsonExportVisitor.h"
 
 struct NetList{
     Node *t1, *t2;
@@ -24,4 +25,8 @@ Node *Inductor::getT1() {
 
 Node *Inductor::getT2() {
     return netlist->t2;
+}
+
+std::string Inductor::accept(JsonExportVisitor *visitor) {
+    return visitor->exportInductor(this);
 }

@@ -4,7 +4,8 @@
 #include "Cmos.h"
 
 class Nmos : public Cmos{
-
+public:
+    std::string accept(JsonExportVisitor *visitor) override;
 };
 
 

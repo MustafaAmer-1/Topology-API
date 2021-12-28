@@ -12,6 +12,7 @@ private:
 public:
     void addDevice(Device* device);
     std::vector<Device*> getDeviceList();
+    std::string accept(JsonExportVisitor* visitor);
 };
 
 

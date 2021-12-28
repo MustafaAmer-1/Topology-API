@@ -46,7 +46,7 @@ std::string JsonExportVisitor::exportCapacitor(Capacitor *device) {
 
 std::string JsonExportVisitor::exportCmos(Cmos *device) {
     std::string res = R"("id": ")" + device->getId() + "\","
-                      "\"m(1)\": {"
+                      "\"m(l)\": {"
                       R"("default": )" + std::to_string(device->getDefault()) + ","
                       R"("min": )" + std::to_string(device->getMin()) + ","
                       R"("max": )" + std::to_string(device->getMax()) + "},"

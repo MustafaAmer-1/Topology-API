@@ -17,6 +17,8 @@ public:
     bool isAttached(Node *node) override;
     Node* getT1();
     Node* getT2();
+
+    std::string accept(JsonExportVisitor *visitor) override;
 };
 
 
