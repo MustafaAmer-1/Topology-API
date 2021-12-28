@@ -16,7 +16,15 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(TopologyTest tst_topologytest.cpp)
+include_directories(../src ../headers)
+
+file(GLOB_RECURSE SRC "../src/*.cpp")
+file(GLOB_RECURSE HEADERS "../headers/*.h")
+
+add_executable(TopologyTest
+        ${SRC}
+        ${HEADERS}
+        tst_devices.cpp)
 add_test(NAME TopologyTest COMMAND TopologyTest)
 
 target_link_libraries(TopologyTest PRIVATE Qt${QT_VERSION_MAJOR}::Test)
