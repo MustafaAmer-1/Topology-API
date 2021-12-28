@@ -9,8 +9,8 @@
 
 class Resistor : public Device{
 public:
-    explicit Resistor(int defaultValue=DEFAULT_RES_VALUE,
-            int min=DEFAULT_MIN_RES_VALUE, int max=DEFAULT_MAX_RES_VALUE);
+    explicit Resistor(double defaultValue=DEFAULT_RES_VALUE,
+                      double min=DEFAULT_MIN_RES_VALUE, double max=DEFAULT_MAX_RES_VALUE);
 };
 
 

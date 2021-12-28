@@ -8,11 +8,11 @@ private:
     Value* value;
 
 public:
-    explicit Device(int defaultValue=0, int min=0, int max=0);
+    explicit Device(double defaultValue=0, double min=0, double max=0);
 
-    int getMin();
-    int getMax();
-    int getDefault();
+    double getMin();
+    double getMax();
+    double getDefault();
 };
 
 #endif //TOPOLOGY_API_DEVICE_H
