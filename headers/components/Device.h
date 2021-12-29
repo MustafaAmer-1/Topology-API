@@ -18,6 +18,8 @@ protected:
 public:
     explicit Device(double defaultValue=0, double min=0, double max=0);
 
+    virtual ~Device();
+
     double getMin();
     double getMax();
     double getDefault();

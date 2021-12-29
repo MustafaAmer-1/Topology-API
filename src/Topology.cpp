@@ -12,3 +12,7 @@ std::vector<Device*> Topology::getDeviceList() {
 std::string Topology::accept(JsonExportVisitor *visitor) {
     return visitor->exportTopology(this);
 }
+
+Topology::~Topology() {
+    for(auto comp: components) delete comp;
+}

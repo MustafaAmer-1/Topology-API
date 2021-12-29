@@ -10,6 +10,7 @@ private:
     std::vector<Device*> components;
 
 public:
+    virtual ~Topology();
     void addDevice(Device* device);
     std::vector<Device*> getDeviceList();
     std::string accept(JsonExportVisitor* visitor);

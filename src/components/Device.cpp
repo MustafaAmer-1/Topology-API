@@ -14,3 +14,7 @@ Device::Device(double defaultValue, double min, double max) {
     value = new Value(defaultValue, min, max);
 }
 
+Device::~Device() {
+    delete value;
+}
+
