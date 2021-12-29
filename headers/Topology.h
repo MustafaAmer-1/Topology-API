@@ -5,7 +5,7 @@
 #include "ElectronicObject.h"
 #include "Device.h"
 
-class Topology : public ElectronicObject{
+class Topology : public ElectronicObject<Topology>{
 private:
     std::vector<Device*> components;
 

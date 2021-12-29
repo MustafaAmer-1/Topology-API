@@ -9,7 +9,7 @@ struct NetList;
 
 class JsonExportVisitor;
 
-class Device : public ElectronicObject{
+class Device : public ElectronicObject<Device>{
 private:
     Value* value;
 protected:

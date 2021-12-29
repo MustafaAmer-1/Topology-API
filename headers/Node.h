@@ -3,7 +3,7 @@
 
 #include "ElectronicObject.h"
 
-class Node : public ElectronicObject{
+class Node : public ElectronicObject<Node>{
 public:
     bool operator==(const Node& a);
 };
