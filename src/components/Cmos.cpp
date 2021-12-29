@@ -1,7 +1,7 @@
 #include "Cmos.h"
 
 struct NetList{
-    Node *drain, *gate, *source;
+    Node *drain = nullptr, *gate = nullptr, *source = nullptr;
 };
 
 Cmos::Cmos(double defaultValue, double min, double max) : Device(defaultValue, min, max) {}
@@ -36,4 +36,22 @@ Node *Cmos::getDrain() {
 
 Node *Cmos::getGate() {
     return netlist->gate;
+}
+
+Cmos::~Cmos() {
+    if(netlist->drain != nullptr){
+        Node* tmp = netlist->drain;
+        netlist->drain = nullptr;
+        tmp->free();
+    }
+    if(netlist->gate != nullptr){
+        Node* tmp = netlist->gate;
+        netlist->gate = nullptr;
+        tmp->free();
+    }
+    if(netlist->source != nullptr){
+        Node* tmp = netlist->source;
+        netlist->source = nullptr;
+        tmp->free();
+    }
 }

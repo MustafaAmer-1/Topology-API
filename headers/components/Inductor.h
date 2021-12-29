@@ -12,6 +12,8 @@ public:
     explicit Inductor(double defaultValue=DEFAULT_IND_VALUE,
                       double min=DEFAULT_MIN_IND_VALUE, double max=DEFAULT_MAX_IND_VALUE);
 
+    ~Inductor() override;
+
     void attachT1(Node* );
     void attachT2(Node* );
     bool isAttached(Node *node) override;

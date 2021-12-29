@@ -2,7 +2,7 @@
 #include "JsonExportVisitor.h"
 
 struct NetList{
-    Node *t1, *t2;
+    Node *t1 = nullptr, *t2 = nullptr;
 };
 
 Inductor::Inductor(double defaultValue, double min, double max) : Device(defaultValue, min, max) {}
@@ -32,4 +32,17 @@ Node *Inductor::getT2() {
 
 std::string Inductor::accept(JsonExportVisitor *visitor) {
     return visitor->exportInductor(this);
+}
+
+Inductor::~Inductor() {
+    if(netlist->t1 != nullptr){
+        Node* tmp = netlist->t1;
+        netlist->t1 = nullptr;
+        tmp->free();
+    }
+    if(netlist->t2 != nullptr){
+        Node* tmp = netlist->t2;
+        netlist->t2 = nullptr;
+        tmp->free();
+    }
 }

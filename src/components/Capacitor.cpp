@@ -2,7 +2,7 @@
 #include "JsonExportVisitor.h"
 
 struct NetList{
-    Node *pos_t, *neg_t;
+    Node *pos_t = nullptr, *neg_t = nullptr;
 };
 
 Capacitor::Capacitor(double defaultValue, double min, double max) : Device(defaultValue, min, max) {}
@@ -32,4 +32,17 @@ Node* Capacitor::getNeg_t() {
 
 std::string Capacitor::accept(JsonExportVisitor *visitor) {
     return visitor->exportCapacitor(this);
+}
+
+Capacitor::~Capacitor() {
+    if(netlist->pos_t != nullptr){
+        Node* tmp = netlist->pos_t;
+        netlist->pos_t = nullptr;
+        tmp->free();
+    }
+    if(netlist->neg_t != nullptr){
+        Node* tmp = netlist->neg_t;
+        netlist->neg_t = nullptr;
+        tmp->free();
+    }
 }

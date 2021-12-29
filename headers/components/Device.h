@@ -2,10 +2,10 @@
 #define TOPOLOGY_API_DEVICE_H
 
 #include "ElectronicObject.h"
-#include "Node.h"
 
 struct Value;
 struct NetList;
+class Node;
 
 class JsonExportVisitor;
 
