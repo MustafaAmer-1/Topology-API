@@ -19,6 +19,10 @@ protected:
         objects_map.insert({this->id, (T *) this});
     }
 
+    virtual ~ElectronicObject() {
+        objects_map.erase(id);
+    }
+
 public:
     [[nodiscard]] const std::string &getId() const {
         return this->id;
