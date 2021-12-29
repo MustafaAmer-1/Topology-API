@@ -16,7 +16,10 @@ void Resistor::attachT2(Node *t2) {
 }
 
 bool Resistor::isAttached(Node *node) {
-    return (*node == *netlist->t1 || *node == *netlist->t2);
+    if(node == nullptr) return false;
+    if(netlist->t1 != nullptr && *node == *netlist->t1) return true;
+    if(netlist->t2 != nullptr && *node == *netlist->t2) return true;
+    return false;
 }
 
 Node *Resistor::getT1() {

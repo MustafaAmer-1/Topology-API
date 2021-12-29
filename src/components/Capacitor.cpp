@@ -16,7 +16,10 @@ void Capacitor::attachNeg_t(Node *neg_t) {
 }
 
 bool Capacitor::isAttached(Node *node) {
-    return (*node == *netlist->neg_t || *node == *netlist->pos_t);
+    if(node == nullptr) return false;
+    if(netlist->pos_t != nullptr && *node == *netlist->pos_t) return true;
+    if(netlist->neg_t != nullptr && *node == *netlist->neg_t) return true;
+    return false;
 }
 
 Node* Capacitor::getPos_t() {

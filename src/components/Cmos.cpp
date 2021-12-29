@@ -19,7 +19,11 @@ void Cmos::attachSource(Node * source) {
 }
 
 bool Cmos::isAttached(Node *node) {
-    return (*node == *netlist->drain || *node == *netlist->source || *node == *netlist->gate);
+    if(node == nullptr) return false;
+    if(netlist->drain != nullptr && *node == *netlist->drain) return true;
+    if(netlist->gate != nullptr && *node == *netlist->gate) return true;
+    if(netlist->source != nullptr && *node == *netlist->source) return true;
+    return false;
 }
 
 Node *Cmos::getSource() {
