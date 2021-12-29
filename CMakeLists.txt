@@ -13,8 +13,7 @@ file(GLOB_RECURSE SRC_C "src/components/*.cpp")
 file(GLOB_RECURSE HEADERS "headers/*.h")
 file(GLOB_RECURSE HEADERS_C "headers/components/*.h")
 
-add_executable(Topology-API
-        main.cpp
+add_library(Topology-API SHARED
         ${SRC}
         ${SRC_C}
         ${HEADERS}
