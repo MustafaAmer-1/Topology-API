@@ -118,3 +118,30 @@ Result API::writeJSON(TopologyID top_id, const std::string &FileName) {
     return success;
 }
 
+TopologyList API::queryTopologies() {
+    return Topology::getElementList();
+}
+
+Result API::deleteTopology(TopologyID top_id) {
+    auto t = Topology::getElementWithID(top_id);
+    if(t == nullptr) return failed;
+    delete t;
+    return success;
+}
+
+DeviceList API::queryDevices(TopologyID top_id) {
+    auto t = Topology::getElementWithID(top_id);
+    if(t == nullptr) return {};
+    return t->getDeviceList();
+}
+
+DeviceList API::queryDevicesWithNetlistNode(TopologyID top_id, NetlistNodeID node_id) {
+    Topology* topology = Topology::getElementWithID(top_id);
+    Node* node = Node::getElementWithID(node_id);
+    if(topology == nullptr || node == nullptr) return {};
+    DeviceList list, attached_list;
+    list = topology->getDeviceList();
+    for(auto elm :list)
+        if(elm->isAttached(node)) attached_list.push_back(elm);
+    return attached_list;
+}
