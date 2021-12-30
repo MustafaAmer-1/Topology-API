@@ -5,7 +5,9 @@ struct NetList{
     Node *t1 = nullptr, *t2 = nullptr;
 };
 
-Resistor::Resistor(double defaultValue, double min, double max) : Device(defaultValue, min, max) {}
+Resistor::Resistor(double defaultValue, double min, double max) : Device(defaultValue, min, max) {
+    netlist = new NetList();
+}
 
 void Resistor::attachT1(Node *t1) {
     netlist->t1 = t1;
@@ -45,4 +47,5 @@ Resistor::~Resistor() {
         netlist->t2 = nullptr;
         tmp->free();
     }
+    delete netlist;
 }

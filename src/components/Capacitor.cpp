@@ -5,7 +5,9 @@ struct NetList{
     Node *pos_t = nullptr, *neg_t = nullptr;
 };
 
-Capacitor::Capacitor(double defaultValue, double min, double max) : Device(defaultValue, min, max) {}
+Capacitor::Capacitor(double defaultValue, double min, double max) : Device(defaultValue, min, max) {
+    netlist = new NetList();
+}
 
 void Capacitor::attachPos_t(Node *pos_t) {
     netlist->pos_t = pos_t;
@@ -45,4 +47,5 @@ Capacitor::~Capacitor() {
         netlist->neg_t = nullptr;
         tmp->free();
     }
+    delete netlist;
 }

@@ -4,7 +4,9 @@ struct NetList{
     Node *drain = nullptr, *gate = nullptr, *source = nullptr;
 };
 
-Cmos::Cmos(double defaultValue, double min, double max) : Device(defaultValue, min, max) {}
+Cmos::Cmos(double defaultValue, double min, double max) : Device(defaultValue, min, max) {
+    netlist = new NetList();
+}
 
 void Cmos::attachDrain(Node * drain) {
     netlist->drain = drain;
@@ -54,4 +56,5 @@ Cmos::~Cmos() {
         netlist->source = nullptr;
         tmp->free();
     }
+    delete netlist;
 }

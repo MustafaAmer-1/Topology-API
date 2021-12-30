@@ -5,7 +5,9 @@ struct NetList{
     Node *t1 = nullptr, *t2 = nullptr;
 };
 
-Inductor::Inductor(double defaultValue, double min, double max) : Device(defaultValue, min, max) {}
+Inductor::Inductor(double defaultValue, double min, double max) : Device(defaultValue, min, max) {
+    netlist = new NetList();
+}
 
 void Inductor::attachT1(Node *t1) {
     netlist->t1 = t1;
@@ -45,4 +47,5 @@ Inductor::~Inductor() {
         netlist->t2 = nullptr;
         tmp->free();
     }
+    delete netlist;
 }

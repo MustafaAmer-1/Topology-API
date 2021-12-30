@@ -70,7 +70,7 @@ Result API::readJSON(const std::string& FileName) {
         else if (comp["type"] == "nmos") {
             auto value = comp["m(l)"];
             dev = new Nmos(value["default"], value["min"], value["max"]);
-            for(auto name:{"drain", "gata", "source"}) {
+            for(auto name:{"drain", "gate", "source"}) {
                 auto node = Node::getElementWithID(netlist[name]);
                 if (node == nullptr) {
                     node = new Node();
@@ -85,7 +85,7 @@ Result API::readJSON(const std::string& FileName) {
         else if (comp["type"] == "pmos") {
             auto value = comp["m(l)"];
             dev = new Pmos(value["default"], value["min"], value["max"]);
-            for(auto name:{"drain", "gata", "source"}) {
+            for(auto name:{"drain", "gate", "source"}) {
                 auto node = Node::getElementWithID(netlist[name]);
                 if (node == nullptr) {
                     node = new Node();
