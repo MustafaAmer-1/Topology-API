@@ -1,3 +1,4 @@
+#define JSON_EXAMPLES_PATH "../../json_examples/"
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
@@ -5,7 +6,7 @@
 
 TEST_CASE("topology", "[queryDevices]"){
     auto api1 = API::InitAPI();
-    auto res1 = api1->readJSON("/media/mustafa/E:/MasterMicro_Tasks/Topology-API/TestAPI/api_level_test/topology.json");
+    auto res1 = api1->readJSON(std::string(JSON_EXAMPLES_PATH) + "topology.json");
     REQUIRE(res1 == success);
     DeviceList list = api1->queryDevices("top1");
 
@@ -21,7 +22,7 @@ TEST_CASE("topology", "[queryDevices]"){
 
 TEST_CASE("my_topologies", "[queryDevices]"){
     auto api2 = API::InitAPI();
-    auto res2 = api2->readJSON("/media/mustafa/E:/MasterMicro_Tasks/Topology-API/TestAPI/api_level_test/my_topology.json");
+    auto res2 = api2->readJSON(std::string(JSON_EXAMPLES_PATH) + "my_topology.json");
     REQUIRE(res2 == success);
     DeviceList list = api2->queryDevices("top2");
 

@@ -1,3 +1,4 @@
+#define JSON_EXAMPLES_PATH "../../json_examples/"
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
@@ -5,9 +6,9 @@
 
 TEST_CASE("delete topologies", "[deleteTopology]"){
     API* api = API::InitAPI();
-    auto res = api->readJSON("/media/mustafa/E:/MasterMicro_Tasks/Topology-API/TestAPI/api_level_test/topology.json");
+    auto res = api->readJSON(std::string(JSON_EXAMPLES_PATH) + "topology.json");
     REQUIRE(res == success);
-    res = api->readJSON("/media/mustafa/E:/MasterMicro_Tasks/Topology-API/TestAPI/api_level_test/my_topology.json");
+    res = api->readJSON(std::string(JSON_EXAMPLES_PATH) + "my_topology.json");
     REQUIRE(res == success);
     auto list = api->queryTopologies();
     REQUIRE(list.size() == 2);
