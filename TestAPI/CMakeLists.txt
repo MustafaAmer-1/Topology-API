@@ -31,6 +31,14 @@ add_executable(query_devices
         api_level_test/tst_query_devices.cc
         )
 
+add_executable(query_devices_with_netlistNode
+        ${SRC}
+        ${HEADERS}
+        catch2/catch.hpp
+        api_level_test/tst_query_devices_with_netlistNode.cc
+        )
+
 add_test(NAME queryTopologies COMMAND query_topologies)
 add_test(NAME deleteTopologies COMMAND delete_topologies)
 add_test(NAME queryDevices COMMAND query_devices)
+add_test(NAME queryDevicesWithNetlistNode COMMAND query_devices_with_netlistNode)
