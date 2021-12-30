@@ -1,0 +1,84 @@
+{
+    "id": "top2",
+    "components": [{
+            "type": "capacitor",
+            "id": "cap1",
+            "capacitance": {
+                "default": 20,
+                "min": 2,
+                "max": 5000
+            },
+            "netlist": {
+                "pos_t": "vin2",
+                "neg_t": "c1"
+            }
+        },
+        {
+            "type": "resistor",
+            "id": "myres1",
+            "resistance": {
+                "default": 100,
+                "min": 20,
+                "max": 2000
+            },
+            "netlist": {
+                "t1": "l1",
+                "t2": "r1"
+            }
+        },
+        {
+            "type": "pmos",
+            "id": "pmos1",
+            "m(l)": {
+                "default": 6.5,
+                "min": 3.5,
+                "max": 10.25
+            },
+            "netlist": {
+                "drain": "c1",
+                "gate": "vin2",
+                "source": "vss2"
+            }
+        },
+        {
+            "type": "nmos",
+            "id": "nmos1",
+            "m(l)": {
+                "default": 6.5,
+                "min": 3.5,
+                "max": 10.25
+            },
+            "netlist": {
+                "drain": "n1",
+                "gate": "l1",
+                "source": "vin2"
+            }
+        },
+        {
+            "type": "inductor",
+            "id": "ind1",
+            "inductance": {
+                "default": 150,
+                "min": 50,
+                "max": 1000
+            },
+            "netlist": {
+                "t1": "vin2",
+                "t2": "l1"
+            }
+        },
+        {
+            "type": "resistor",
+            "id": "myres2",
+            "resistance": {
+                "default": 1900,
+                "min": 100,
+                "max": 5000
+            },
+            "netlist": {
+                "t1": "vss2",
+                "t2": "r1"
+            }
+        }
+    ]
+}
