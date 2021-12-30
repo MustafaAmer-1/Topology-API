@@ -5,6 +5,8 @@ project(Topology-API LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+enable_testing()
+
 include_directories(headers headers/components headers/lib)
 add_subdirectory(TestAPI)
 

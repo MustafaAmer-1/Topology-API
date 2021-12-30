@@ -1,31 +1,21 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(TopologyTest LANGUAGES CXX)
-
-enable_testing()
-
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Test REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Test REQUIRED)
-
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
+project(TestAPI LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include_directories(../src ../headers)
+include_directories(../src ../headers catch2)
 
 file(GLOB_RECURSE SRC "../src/*.cpp")
 file(GLOB_RECURSE HEADERS "../headers/*.h")
+file(GLOB_RECURSE API_TESTS "api_level_test/*.cc")
 
-add_executable(TopologyTest
+add_executable(TestAPI
         ${SRC}
         ${HEADERS}
-        tst_devices.cpp)
-add_test(NAME TopologyTest COMMAND TopologyTest)
+        catch2/catch.hpp
+        ${API_TESTS}
+        tst_main.cpp)
 
-target_link_libraries(TopologyTest PRIVATE Qt${QT_VERSION_MAJOR}::Test)
-
+add_test(NAME TestAPI COMMAND TestAPI)
