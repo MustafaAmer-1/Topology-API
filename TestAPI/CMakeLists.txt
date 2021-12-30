@@ -9,13 +9,20 @@ include_directories(../src ../headers catch2)
 
 file(GLOB_RECURSE SRC "../src/*.cpp")
 file(GLOB_RECURSE HEADERS "../headers/*.h")
-file(GLOB_RECURSE API_TESTS "api_level_test/*.cc")
 
-add_executable(TestAPI
+add_executable(query_topologies
         ${SRC}
         ${HEADERS}
         catch2/catch.hpp
-        ${API_TESTS}
-        tst_main.cpp)
+        api_level_test/tst_query_topologies.cc
+        )
 
-add_test(NAME TestAPI COMMAND TestAPI)
+add_executable(delete_topologies
+        ${SRC}
+        ${HEADERS}
+        catch2/catch.hpp
+        api_level_test/tst_delete_topologies.cc
+        )
+
+add_test(NAME queryTopologies COMMAND query_topologies)
+add_test(NAME deleteTopologies COMMAND delete_topologies)

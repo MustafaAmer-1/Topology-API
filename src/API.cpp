@@ -51,7 +51,7 @@ Result API::readJSON(const std::string& FileName) {
                 netnodes.push_back(node);
             }
             ((Capacitor*)dev)->attachPos_t(netnodes[0]);
-            ((Capacitor*)dev)->attachNeg_t(netnodes[2]);
+            ((Capacitor*)dev)->attachNeg_t(netnodes[1]);
         }
         else if (comp["type"] == "inductor") {
             auto value = comp["inductance"];

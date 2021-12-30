@@ -1,32 +1,35 @@
+#define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
 #include "API.h"
 
-TEST_CASE("single_topology", "[queryTopologies]"){
-    API* api = API::InitAPI();
-    auto res = api->readJSON("/media/mustafa/E:/MasterMicro_Tasks/Topology-API/TestAPI/api_level_test/topology.json");
-    REQUIRE(res == success);
-    TopologyList list = api->queryTopologies();
-    REQUIRE(list.size() == 1);
+TEST_CASE("topology", "[queryTopologies]"){
+    auto api1 = API::InitAPI();
+    auto res1 = api1->readJSON("/media/mustafa/E:/MasterMicro_Tasks/Topology-API/TestAPI/api_level_test/topology.json");
+    REQUIRE(res1 == success);
+    TopologyList list = api1->queryTopologies();
     Topology* top1 = list["top1"];
     REQUIRE(top1->getId() == "top1");
-    auto devs = top1->getDeviceList();
-    REQUIRE(devs.size() == 2);
-    REQUIRE(devs[0]->getMin() == 10);
-    REQUIRE(devs[1]->getMax() == 2);
-    REQUIRE(devs[0]->getId() == "res1");
-    REQUIRE(devs[1]->isAttached(Node::getElementWithID("vin")) == true);
-    REQUIRE(devs[0]->isAttached(Node::getElementWithID("vss")) == false);
+    auto devs_top1 = top1->getDeviceList();
+    REQUIRE(devs_top1[0]->getMin() == 10);
+    REQUIRE(devs_top1[1]->getMax() == 2);
+    REQUIRE(devs_top1[0]->getId() == "res1");
+    REQUIRE(devs_top1[1]->isAttached(Node::getElementWithID("vin")) == true);
+    REQUIRE(devs_top1[0]->isAttached(Node::getElementWithID("vss")) == false);
 }
 
-TEST_CASE("multiple_topologies", "[queryTopologies]"){
-    API* api = API::InitAPI();
-    Result res = api->readJSON("/media/mustafa/E:/MasterMicro_Tasks/Topology-API/TestAPI/api_level_test/topology.json");
-    REQUIRE(res == success);
-    res = api->readJSON("/media/mustafa/E:/MasterMicro_Tasks/Topology-API/TestAPI/api_level_test/my_topology.json");
-    REQUIRE(res == success);
-    TopologyList list = api->queryTopologies();
-    REQUIRE(list.size() == 2);
+TEST_CASE("my_topologies", "[queryTopologies]"){
+    auto api2 = API::InitAPI();
+    auto res2 = api2->readJSON("/media/mustafa/E:/MasterMicro_Tasks/Topology-API/TestAPI/api_level_test/my_topology.json");
+    REQUIRE(res2 == success);
+    TopologyList list = api2->queryTopologies();
+    Topology* top2 = list["top2"];
+    REQUIRE(top2->getId() == "top2");
+    auto devs_top2 = top2->getDeviceList();
+    REQUIRE("nmos1" == devs_top2[3]->getId());
+    REQUIRE("ind1" == devs_top2[4]->getId());
+    REQUIRE(50 == devs_top2[4]->getMin());
+    REQUIRE(6.5 == devs_top2[3]->getDefault());
     REQUIRE(true == Device::getElementWithID("pmos1")->isAttached(Node::getElementWithID("c1")));
     REQUIRE(false == Device::getElementWithID("nmos1")->isAttached(Node::getElementWithID("c1")));
     REQUIRE(true == Device::getElementWithID("ind1")->isAttached(Node::getElementWithID("l1")));
