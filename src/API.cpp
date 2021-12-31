@@ -114,7 +114,8 @@ Result API::writeJSON(TopologyID top_id, const std::string &FileName) {
     auto top = Topology::getElementWithID(top_id);
     if(!outfile.is_open() || top == nullptr) return failed;
 
-    json j = json::parse(top->accept(JsonExportVisitor::getJsonExportVisitor()));
+    std::string out_j = top->accept(JsonExportVisitor::getJsonExportVisitor());
+    json j = json::parse(out_j);
     outfile << std::setw(4) << j;
     outfile.close();
     return success;

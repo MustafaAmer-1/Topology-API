@@ -39,8 +39,8 @@ std::string JsonExportVisitor::exportCapacitor(Capacitor *device) {
                       R"("min": )" + std::to_string(device->getMin()) + ","
                       R"("max": )" + std::to_string(device->getMax()) + "},"
                       R"("netlist": {)"
-                      R"("positive_t": ")" + device->getPos_t()->getId() + "\","
-                      R"("negative_t": ")" + device->getNeg_t()->getId() + "\"}}";
+                      R"("pos_t": ")" + device->getPos_t()->getId() + "\","
+                      R"("neg_t": ")" + device->getNeg_t()->getId() + "\"}}";
     return res;
 }
 
@@ -52,7 +52,7 @@ std::string JsonExportVisitor::exportCmos(Cmos *device) {
                       R"("max": )" + std::to_string(device->getMax()) + "},"
                       R"("netlist": {)"
                       R"("drain": ")" + device->getDrain()->getId() + "\","
-                      R"("gate": ")" + device->getGate()->getId() + "\"}}";
+                      R"("gate": ")" + device->getGate()->getId() + "\","
                       R"("source": ")" + device->getSource()->getId() + "\"}}";
     return res;
 }
@@ -66,7 +66,7 @@ std::string JsonExportVisitor::exportPmos(Pmos *device) {
 }
 
 std::string JsonExportVisitor::exportTopology(Topology *obj) {
-    std::string res = R"({"id": )" + obj->getId() + "\","
+    std::string res = R"({"id": ")" + obj->getId() + "\","
                       R"("components": [)";
     std::vector<Device*> devs = obj->getDeviceList();
     for(int i = 0; i < devs.size(); i++){
