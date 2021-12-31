@@ -13,6 +13,7 @@ Result API::readJSON(const std::string& FileName) {
     if(!infile.is_open()) return failed;
     json j;
     infile >> j;
+    infile.close();
     Topology* topology = new Topology();
     try {
         topology->setId(j["id"]);
@@ -115,6 +116,7 @@ Result API::writeJSON(TopologyID top_id, const std::string &FileName) {
 
     json j = json::parse(top->accept(JsonExportVisitor::getJsonExportVisitor()));
     outfile << std::setw(4) << j;
+    outfile.close();
     return success;
 }
 
