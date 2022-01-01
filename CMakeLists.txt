@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 enable_testing()
 
-include_directories(headers headers/components headers/lib)
+include_directories(headers headers/components headers/lib .)
 add_subdirectory(TestAPI)
 
 file(GLOB_RECURSE SRC "src/*.cpp")
@@ -20,4 +20,5 @@ add_library(Topology-API SHARED
         ${SRC_C}
         ${HEADERS}
         ${HEADERS_C}
+        API.h
         headers/lib/json.hpp)

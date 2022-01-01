@@ -5,7 +5,7 @@ project(TestAPI LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include_directories(../src ../headers catch2)
+include_directories(../src ../headers catch2 ../)
 
 file(GLOB_RECURSE SRC "../src/*.cpp")
 file(GLOB_RECURSE HEADERS "../headers/*.h")
@@ -15,6 +15,7 @@ add_executable(tst_query_topologies
         ${HEADERS}
         catch2/catch.hpp
         api_level_test/tst_query_topologies.cc
+        ../API.h
         )
 
 add_executable(tst_delete_topologies
@@ -22,6 +23,7 @@ add_executable(tst_delete_topologies
         ${HEADERS}
         catch2/catch.hpp
         api_level_test/tst_delete_topologies.cc
+        ../API.h
         )
 
 add_executable(tst_query_devices
@@ -29,6 +31,7 @@ add_executable(tst_query_devices
         ${HEADERS}
         catch2/catch.hpp
         api_level_test/tst_query_devices.cc
+        ../API.h
         )
 
 add_executable(tst_query_devices_with_netlistNode
@@ -36,6 +39,7 @@ add_executable(tst_query_devices_with_netlistNode
         ${HEADERS}
         catch2/catch.hpp
         api_level_test/tst_query_devices_with_netlistNode.cc
+        ../API.h
         )
 
 add_executable(tst_write_json
@@ -43,6 +47,7 @@ add_executable(tst_write_json
         ${HEADERS}
         catch2/catch.hpp
         api_level_test/tst_write_json.cc
+        ../API.h
         )
 
 add_test(NAME queryTopologies COMMAND tst_query_topologies)
