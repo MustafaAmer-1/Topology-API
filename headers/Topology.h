@@ -1,3 +1,13 @@
+/**
+ * @file Topology.h
+ * @author Mustafa Amer (eng.MustafaAmer0@gmail.com)
+ * @brief Topology class signature
+ * @version 0.1
+ * @date 2022-01-01
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef TOPOLOGY_API_TOPOLOGY_H
 #define TOPOLOGY_API_TOPOLOGY_H
 
